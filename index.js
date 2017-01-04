@@ -18,6 +18,8 @@ var SEND = "Not Connected";
 mongoose.connect(mongoURL,(err)=>{
     if(err) console.log(err);
     else SEND='Connected';
+    SEND +='<br/>';
+    SEND +=mongoURL;
 });
 
 
