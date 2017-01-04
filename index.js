@@ -1,6 +1,6 @@
 var express = require('express');
 var app = new express();
-
+var mongoose = require('mongoose');
 app.set('port', parseInt(process.env.OPENSHIFT_NODEJS_PORT) || 8080);
 
 
