@@ -12,8 +12,17 @@ app.set('ip', process.env.OPENSHIFT_NODEJS_IP ||process.env.IP|| '127.0.0.1');
 
 
 var mongoURL = 'mongodb://'+app.get('MongoUser')+':'+app.get('MongoPass')+'@'+app.get('MongoHost')+':'+app.get('MongoPort')+'/'+app.get('DbName');
+
+
+var SEND = "Not Connected";
+mongoose.connect(mongoURL,(err)=>{
+    if(err) console.log(err);
+    else SEND='Connected';
+});
+
+
 app.get('/', function (req, res) {
-  res.send(mongoURL);
+  res.send(SEND);
 });
 try{
     app.listen(app.get('port'), app.get('ip'),function () {
